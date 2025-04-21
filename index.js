@@ -50,8 +50,8 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(r) {
+  return 2*pi*r;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -64,8 +64,8 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(r, pi) {
+  return pi*r*r;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -97,31 +97,58 @@ let ucetambolunenler,
   siralisayilar,
   tekraredensayilar;
 
-// 3a çözümü
+  const sayilar = [12, 3, 45.6, 999, 21, 3, 500.5, 45, 45, 18, 20, 999, 300, 18.0, 0, 45];
 
-/* kodlar buraya */
-
-// 3b çözümü:
-
-/* kodlar buraya */
-
-// 3c çözümü:
-
-/* kodlar buraya */
-
-// 3d çözümü
-
-/* kodlar buraya */
-
-// 3e çözümü
-
-/* kodlar buraya */
-
-// 3f çözümü
-
-/* kodlar buraya */
-
-/*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
+  
+  let enbuyuk = sayilar[0];
+  let enkucuk = sayilar[0];
+  
+  for (let i = 1; i < sayilar.length; i++) {
+      if (sayilar[i] > enbuyuk) {
+          enbuyuk = sayilar[i];
+      }
+      if (sayilar[i] < enkucuk) {
+          enkucuk = sayilar[i];
+      }
+  }
+  console.log("En büyük:", enbuyuk);
+  console.log("En küçük:", enkucuk);
+  
+  
+  const ucetambolunenler = [];
+  sayilar.forEach(sayi => {
+      if (Number.isInteger(sayi) && sayi % 3 === 0) {
+          ucetambolunenler.push(sayi);
+      }
+  });
+  console.log("3'e tam bölünenler:", ucetambolunenler);
+  
+  
+  const ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => toplam + sayi, 0);
+  console.log("3'e bölünenlerin toplamı:", ucebolunenlerintoplami);
+  
+  
+  const besyuzdenkucuksayilar = sayilar.filter(sayi => sayi < 500);
+  console.log("500'den küçük sayılar:", besyuzdenkucuksayilar);
+  
+  
+  const siralisayilar = [...besyuzdenkucuksayilar].sort((a, b) => a - b);
+  console.log("Sıralı sayılar:", siralisayilar);
+  
+  
+  const sayiSayaci = {};
+  sayilar.forEach(sayi => {
+      const key = sayi.toString(); 
+      sayiSayaci[key] = (sayiSayaci[key] || 0) + 1;
+  });
+  
+  const tekraredensayilar = [];
+  for (const key in sayiSayaci) {
+      if (sayiSayaci[key] > 1) {
+          tekraredensayilar.push(`${key} sayısı ${sayiSayaci[key]} kere tekrar edilmiştir`);
+      }
+  }
+  console.log("Tekrar eden sayılar:", tekraredensayilar);
 
 function sa() {
   console.log("Kodlar çalışıyor");
